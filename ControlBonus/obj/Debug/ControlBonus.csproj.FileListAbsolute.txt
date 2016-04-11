@@ -1,0 +1,6 @@
+c:\users\marwan\ControlBonus\ControlBonus\bin\Debug\ControlBonus.exe.config
+C:\Users\Marwan\ControlBonus\ControlBonus\bin\Debug\ControlBonus.exe
+C:\Users\Marwan\ControlBonus\ControlBonus\bin\Debug\ControlBonus.pdb
+C:\Users\Marwan\ControlBonus\ControlBonus\obj\Debug\ControlBonus.csprojResolveAssemblyReference.cache
+C:\Users\Marwan\ControlBonus\ControlBonus\obj\Debug\ControlBonus.exe
+C:\Users\Marwan\ControlBonus\ControlBonus\obj\Debug\ControlBonus.pdb
