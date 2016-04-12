@@ -12,7 +12,7 @@ namespace ControlBonus
         public bool visited=false;
         public string name;
         public string relation;
-        const List<node> allNodes= new List<node>();
+        static List<node> allNodes= new List<node>();
         public node(string name)
         {
             this.name = name;
