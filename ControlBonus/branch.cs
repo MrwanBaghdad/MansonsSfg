@@ -12,7 +12,7 @@ namespace ControlBonus
         node end;
         string relation;
         node curNode;
-        List<node> stk = new List<node>();
+
         string[] loops ;
         branch(node start, node end, string relation)
         {

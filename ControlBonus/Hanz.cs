@@ -38,13 +38,23 @@ namespace ControlBonus
                     string temp = "";
                     for (int i = index; i > stk.Count(); i++)
                     {
+
                         temp += stk[i].name;
                         temp += " ";
                     }
                     loops.Add(temp);
                     curNode = stk[index - 1];
+                    stk.RemoveAt(stk.Count()-1);
+
+                    if (curNode.next.Count()>0)
+                    {
+                        continue;
+                    }
+                    
+                    
                 }
             }
+            
         }
 
         void visit_NextNode()
@@ -77,6 +87,7 @@ namespace ControlBonus
         }
 
 
+        //Node exists in stack
         int exists_before()
         {
             int index = 0;
