@@ -56,6 +56,19 @@ namespace ControlBonus
             }
             
         }
+        
+        public void dfs_St_Path(node input, node output){
+            for (int i = 0; i <= input.next.Count(); i++)
+            {
+                input.visited = true;
+                stk.Add(input);
+                dfs_St_Path(input.next[i], output);
+            }
+            if (input.Equals(output))
+            {
+                
+            }
+        }
 
         void visit_NextNode()
         {

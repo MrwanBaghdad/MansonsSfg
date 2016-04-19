@@ -8,29 +8,50 @@ namespace ControlBonus
 {
     class Program
     {
-        void Main(string[] args)
+        static void Main(string[] args)
         {
         string inp;
+        int count;
         do
         {
             Console.WriteLine("enter number of nodes:");
             do
                 inp = Console.ReadLine();
             while (!is_a_num(inp));
+            do
+            Console.WriteLine("enter number of branches");
+            while(!is_a_num(inp));
+
+            count = Convert.ToInt32(inp);
+            for (int i = 0; i < count; i++)
+            {
+                Console.WriteLine("nodes connecting branches and relations");
+                //spereated by commas
+                
+            }
 
         }
         while (inp!="fin");
         
         }
-        bool is_a_num(string s)
+        static bool  is_a_num(string s)
         {
-            char[] arr = s.ToArray();
-            foreach (char c in arr)
+            decimal temp;
+            try
             {
-                if (!(Convert.ToDecimal(c) >= 0 && Convert.ToDecimal(c) <= 9))
+                temp = Convert.ToDecimal(s);
+                if (temp - (int)temp == 0)
+                    return true;
+                else
                     return false;
+                
             }
-            return false;
+            catch (Exception e)
+            {
+                return false;
+            }
+            
         }
+
     }
 }
