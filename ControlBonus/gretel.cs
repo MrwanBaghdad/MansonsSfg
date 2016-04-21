@@ -69,22 +69,19 @@ namespace ControlBonus
                          */
                         currentNode = NextNode(currentNode);
                         travaerse(NextNode(currentNode), outNode,st);
-                        
+                        //>>Here arrived at end
+                        stk.Remove(stk.Last());
+                        //Change visited to false, so it can be visited by other branches
+                        currentNode.visited = false;
                     }
-                    //Here Finished all branches 
-                    
+                    //>>Here Finished all branches 
                 }
-                
             }
             else
             {
             //recursive reached outnode here
-                
-            }
-            //change visit to false to be used in other st paths and loops
-            currentNode.visited = false;
-            //Remove current node from stack
             Console.WriteLine("Arrived to out node");
+            }
         }
     }
 }
