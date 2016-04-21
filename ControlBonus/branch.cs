@@ -14,16 +14,16 @@ namespace ControlBonus
         node curNode;
 
         string[] loops ;
-        branch(node start, node end, string relation)
+        public branch(node start, node end, string relation)
         {
             this.start = start;
             this.end = end;
             start.next.Add(end);
-            this.relation = relation;
+            start.relation = relation;
         }
 
         //Traverse algo
-        
+        //UPDATE added to gretel class
         
         
     }

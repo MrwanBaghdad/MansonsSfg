@@ -12,7 +12,8 @@ namespace ControlBonus
         public bool visited=false;
         public string name;
         public string relation;
-        static List<node> allNodes= new List<node>();
+        //UPDATE Removed static nodes list 
+
         public node(string name)
         {
             this.name = name;

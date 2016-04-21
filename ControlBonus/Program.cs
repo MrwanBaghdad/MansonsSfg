@@ -10,29 +10,15 @@ namespace ControlBonus
     {
         static void Main(string[] args)
         {
-        string inp;
-        int count;
-        do
-        {
-            Console.WriteLine("enter number of nodes:");
-            do
-                inp = Console.ReadLine();
-            while (!is_a_num(inp));
-            do
-            Console.WriteLine("enter number of branches");
-            while(!is_a_num(inp));
-
-            count = Convert.ToInt32(inp);
-            for (int i = 0; i < count; i++)
-            {
-                Console.WriteLine("nodes connecting branches and relations");
-                //spereated by commas
-                
-            }
-
-        }
-        while (inp!="fin");
-        
+            node y1 = new node("y1");
+            node y2 = new node("y2");
+            node y3 = new node("y3");
+            branch b1 = new branch(y1, y2, "1");
+            branch b2 = new branch(y1, y3, "1");
+            branch b3 = new branch(y1, y2, "1");
+            gretel g = new gretel();
+            g.travaerse(y1, y3);
+            
         }
         static bool  is_a_num(string s)
         {
