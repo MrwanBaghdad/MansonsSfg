@@ -67,7 +67,7 @@ namespace ControlBonus
                         /*
                          funciton already return a node
                          */
-                        currentNode = NextNode(currentNode);
+                        //currentNode = NextNode(currentNode);
                         travaerse(NextNode(currentNode), outNode,st);
                         //>>Here arrived at end
                         stk.Remove(stk.Last());
