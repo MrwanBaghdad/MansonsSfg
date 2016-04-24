@@ -73,11 +73,17 @@ namespace ControlBonus
                     }
                     //>>Here Finished all branches 
                 }
+                else
+                {
+                    //>> current node can't reach output
+                    currentNode.visited = false;
+                }
             }
             else
             {
             //recursive reached outnode here
-            Console.WriteLine("Arrived to out node");
+                stPaths.Add(st);
+                Console.WriteLine("Arrived to out node");
             }
         }
     }
