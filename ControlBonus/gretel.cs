@@ -12,7 +12,7 @@ namespace ControlBonus
         List<node> stk = new List<node>();
         List<string> loops = new List<string>();
         List<string> stPaths= new List<string>();
-        public node NextNode(node n){
+        public node NextNode(node n, string st){
             if (n.next.Count() > 0)
             {
                 //Therefore exists next nodes
@@ -20,29 +20,39 @@ namespace ControlBonus
                 {
                     if (i.visited==false)
                     {
-                        stk.Add(n);
+                        /*no need for stak
+                         * recursive stack is fine 
+                         */
                         i.visited = true;
                         return i;
                     }
                     else
                     {
-                        int count =0;
-                        foreach (node sNode in stk)
+                        // >> Node.visited == false
+                        if (st.Contains(i.name))
                         {
-                            if (sNode.Equals(i))
-                            {
-                                //Found a loop
-                                string s = "";
-                                //Search for the current node in the stack
-                                for (int pl = count; pl < stk.Count(); pl++)
-                                {
-                                    s += stk[pl].name;
-                                    s += " ";
-                                }
-                                loops.Add(s);
-                            }
-                            count++;
+                            //>>found a loop
+                            //TODO : get the loop name
+                            
+                            var indexOfString=st.IndexOf(i.name);
+                            string loopName = st.Substring(indexOfString);
                         }
+                        //foreach (node sNode in stk)
+                        //{
+                        //    if (sNode.Equals(i))
+                        //    {
+                        //        //Found a loop
+                        //        string s = "";
+                        //        //Search for the current node in the stack
+                        //        for (int pl = count; pl < stk.Count(); pl++)
+                        //        {
+                        //            s += stk[pl].name;
+                        //            s += " ";
+                        //        }
+                        //        loops.Add(s);
+                        //    }
+                        //    count++;
+                        //}
                     }
                     return null;
                 }
@@ -67,7 +77,7 @@ namespace ControlBonus
                         /*
                          funciton already return a node
                          */
-                        //currentNode = NextNode(currentNode);
+                        // xx currentNode = NextNode(currentNode);
                         travaerse(NextNode(currentNode), outNode,st);
                         //>>Here arrived at end
                         stk.Remove(stk.Last());
