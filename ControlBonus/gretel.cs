@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ControlBonus
 {
     class gretel
@@ -12,18 +13,21 @@ namespace ControlBonus
         List<node> stk = new List<node>();
         public List<string> loops = new List<string>();
         public List<string> stPaths= new List<string>();
-        public node NextNode(node n, string st){
+        public List<string> stPathsEqu = new List<string>();
+        public List<string> loopsEqu = new List<string>();
+
+         public node NextNode(node n, string st){
             if (n.next.Count() > 0)
             {
                 //Therefore exists next nodes
                 foreach (node i in n.next)
                 {
+                    
                     if (i.visited==false)
                     {
                         /*no need for stak
                          * recursive stack is fine 
                          */
-                        st += i.name;
                         i.visited = true;
                         return i;
                     }
@@ -48,29 +52,46 @@ namespace ControlBonus
         }
         //String outside of the function to be allowed to changed via 
         //no need string stack argument recursive instead
-        public void travaerse(node currentNode,node outNode,string st)
+
+
+        public void travaerse2(node currentNode, node outNode, string st)
         {
+            st += " ";
+            st += currentNode.name;
             if (!currentNode.Equals(outNode))
             {
-
                 if (currentNode.next.Count > 0)
                 {
-                    for (int i = 0; i <currentNode.next.Count(); i++)
+                    foreach (node noodel in currentNode.next)
                     {
-                        st+= currentNode.name;
-                        st += " ";
                         //To get loops 
                         /*
                          funciton already return a node
                          */
                         // xx currentNode = NextNode(currentNode);
-                        node temp = NextNode(currentNode, st);
-                        if(temp!= null)
-                            travaerse(temp, outNode,st);
+                        //node temp = NextNode(currentNode, st);
+                        node temp = null;
+                        if (noodel.visited==false)
+                        {
+                            noodel.visited = true;
+                            temp = noodel;
+                        }
+                        else
+                        {
+                            if (st.Contains(noodel.name))
+                            {
+                                //found a loop
+                                int indexOfString = st.IndexOf(noodel.name);
+                                string loopName = st.Substring(indexOfString);
+                                loops.Add(loopName);
+                            }
+                        }
+                        if (temp != null)
+                            travaerse2(temp, outNode, st);
                         //>>Here arrived at end
                         //Change visited to false, so it can be visited by other branches
-                        currentNode.visited = false;
                     }
+                    currentNode.visited = false;
                     //>>Here Finished all branches 
                 }
                 else
@@ -81,12 +102,12 @@ namespace ControlBonus
             }
             else
             {
-            //recursive reached outnode here
-                st += currentNode.name;
+                //recursive reached outnode here
                 stPaths.Add(st);
                 currentNode.visited = false;
-                Console.WriteLine("Arrived to out node");
+                //Console.WriteLine("Arrived to out node");
             }
         }
     }
+
 }
