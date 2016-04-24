@@ -33,26 +33,9 @@ namespace ControlBonus
                         {
                             //>>found a loop
                             //TODO : get the loop name
-                            
                             var indexOfString=st.IndexOf(i.name);
                             string loopName = st.Substring(indexOfString);
                         }
-                        //foreach (node sNode in stk)
-                        //{
-                        //    if (sNode.Equals(i))
-                        //    {
-                        //        //Found a loop
-                        //        string s = "";
-                        //        //Search for the current node in the stack
-                        //        for (int pl = count; pl < stk.Count(); pl++)
-                        //        {
-                        //            s += stk[pl].name;
-                        //            s += " ";
-                        //        }
-                        //        loops.Add(s);
-                        //    }
-                        //    count++;
-                        //}
                     }
                     return null;
                 }
