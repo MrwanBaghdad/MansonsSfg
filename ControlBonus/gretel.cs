@@ -34,9 +34,7 @@ namespace ControlBonus
                         if (st.Contains(i.name) )
                         {
                             //>>found a loop
-                            
-                            //TODO : sure to add node name after searching NOT before
-                            //TODO : check for substring and inedxOF funcitons
+
                             var indexOfString=st.IndexOf(i.name);
                             string loopName = st.Substring(indexOfString);
                             loops.Add(loopName);
