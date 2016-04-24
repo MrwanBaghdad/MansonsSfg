@@ -29,12 +29,17 @@ namespace ControlBonus
                     else
                     {
                         // >> Node.visited == false
-                        if (st.Contains(i.name))
+                        
+                        if(st.Length>0) //check for the stack not empty
+                        if (st.Contains(i.name) )
                         {
                             //>>found a loop
                             //TODO : get the loop name
+                            //TODO : sure to add node name after searching NOT before
+                            //TODO : check for substring and inedxOF funcitons
                             var indexOfString=st.IndexOf(i.name);
                             string loopName = st.Substring(indexOfString);
+                            loops.Add(loopName);
                         }
                     }
                     return null;
@@ -43,12 +48,11 @@ namespace ControlBonus
             return null;
         }
         //String outside of the function to be allowed to changed via 
-        string s;
+        //no need string stack argument recursive instead
         public void travaerse(node currentNode,node outNode,string st)
         {
             if (!currentNode.Equals(outNode))
             {
-                node temp=NextNode(currentNode);
                 if (currentNode.next.Count > 0 && temp!=null)
                 {
                     for (int i = 0; i < currentNode.next.Count(); i++)
@@ -56,14 +60,12 @@ namespace ControlBonus
                         st+= currentNode.name;
                         st += " ";
                         //To get loops 
-                        stk.Add(currentNode);
                         /*
                          funciton already return a node
                          */
                         // xx currentNode = NextNode(currentNode);
-                        travaerse(NextNode(currentNode), outNode,st);
+                        travaerse(NextNode(currentNode,st), outNode,st);
                         //>>Here arrived at end
-                        stk.Remove(stk.Last());
                         //Change visited to false, so it can be visited by other branches
                         currentNode.visited = false;
                     }
