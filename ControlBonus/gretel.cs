@@ -10,8 +10,8 @@ namespace ControlBonus
     {
         //stack to check for loops
         List<node> stk = new List<node>();
-        List<string> loops = new List<string>();
-        List<string> stPaths= new List<string>();
+        public List<string> loops = new List<string>();
+        public List<string> stPaths= new List<string>();
         public node NextNode(node n, string st){
             if (n.next.Count() > 0)
             {
@@ -23,6 +23,7 @@ namespace ControlBonus
                         /*no need for stak
                          * recursive stack is fine 
                          */
+                        st += i.name;
                         i.visited = true;
                         return i;
                     }
@@ -35,7 +36,7 @@ namespace ControlBonus
                         {
                             //>>found a loop
 
-                            var indexOfString=st.IndexOf(i.name);
+                            int indexOfString=st.IndexOf(i.name);
                             string loopName = st.Substring(indexOfString);
                             loops.Add(loopName);
                         }
@@ -51,9 +52,10 @@ namespace ControlBonus
         {
             if (!currentNode.Equals(outNode))
             {
+
                 if (currentNode.next.Count > 0)
                 {
-                    for (int i = 0; i < currentNode.next.Count(); i++)
+                    for (int i = 0; i <currentNode.next.Count(); i++)
                     {
                         st+= currentNode.name;
                         st += " ";
@@ -80,7 +82,9 @@ namespace ControlBonus
             else
             {
             //recursive reached outnode here
+                st += currentNode.name;
                 stPaths.Add(st);
+                currentNode.visited = false;
                 Console.WriteLine("Arrived to out node");
             }
         }
