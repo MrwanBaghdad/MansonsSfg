@@ -34,7 +34,7 @@ namespace ControlBonus
                         if (st.Contains(i.name) )
                         {
                             //>>found a loop
-                            //TODO : get the loop name
+                            
                             //TODO : sure to add node name after searching NOT before
                             //TODO : check for substring and inedxOF funcitons
                             var indexOfString=st.IndexOf(i.name);
@@ -53,7 +53,7 @@ namespace ControlBonus
         {
             if (!currentNode.Equals(outNode))
             {
-                if (currentNode.next.Count > 0 && temp!=null)
+                if (currentNode.next.Count > 0)
                 {
                     for (int i = 0; i < currentNode.next.Count(); i++)
                     {
@@ -64,7 +64,9 @@ namespace ControlBonus
                          funciton already return a node
                          */
                         // xx currentNode = NextNode(currentNode);
-                        travaerse(NextNode(currentNode,st), outNode,st);
+                        node temp = NextNode(currentNode, st);
+                        if(temp!= null)
+                            travaerse(temp, outNode,st);
                         //>>Here arrived at end
                         //Change visited to false, so it can be visited by other branches
                         currentNode.visited = false;

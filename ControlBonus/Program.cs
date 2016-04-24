@@ -17,7 +17,8 @@ namespace ControlBonus
             branch b2 = new branch(y1, y3, "1");
             branch b3 = new branch(y1, y2, "1");
             gretel g = new gretel();
-            g.travaerse(y1, y3);
+            string st = "";
+            g.travaerse(y1, y3,st);
             
         }
         static bool  is_a_num(string s)
