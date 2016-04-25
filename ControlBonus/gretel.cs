@@ -16,40 +16,6 @@ namespace ControlBonus
         public List<string> stPathsEqu = new List<string>();
         public List<string> loopsEqu = new List<string>();
 
-         public node NextNode(node n, string st){
-            if (n.next.Count() > 0)
-            {
-                //Therefore exists next nodes
-                foreach (node i in n.next)
-                {
-                    
-                    if (i.visited==false)
-                    {
-                        /*no need for stak
-                         * recursive stack is fine 
-                         */
-                        i.visited = true;
-                        return i;
-                    }
-                    else
-                    {
-                        // >> Node.visited == false
-                        
-                        if(st.Length>0) //check for the stack not empty
-                        if (st.Contains(i.name) )
-                        {
-                            //>>found a loop
-
-                            int indexOfString=st.IndexOf(i.name);
-                            string loopName = st.Substring(indexOfString);
-                            loops.Add(loopName);
-                        }
-                    }
-                    return null;
-                }
-            }
-            return null;
-        }
         //String outside of the function to be allowed to changed via 
         //no need string stack argument recursive instead
 
@@ -108,6 +74,45 @@ namespace ControlBonus
                 //Console.WriteLine("Arrived to out node");
             }
         }
+
+        public void getEqu()
+        {
+            // get loops equations
+            for (int i = 0; i < loops.Count; i++)
+            {
+                string s1 = loops[i];
+                string[] arr= s1.Split();
+                string rel="";
+                for (int j = 0; j < arr.Length-1; j++)
+                {
+                    string rel2 = branch.getRelation(arr[j], arr[j+1]);
+                    rel += rel2+" ";
+                }
+                loopsEqu.Add(rel);
+            }
+            //Get the st paths equations
+            for (int i = 0; i < stPaths.Count; i++)
+            {
+                string s1 = stPaths[i];
+                string[] arr = s1.Split();
+                string rel = "";
+                for (int j = 0; j < arr.Length - 1; j++)
+                {
+                    string rel2 = branch.getRelation(arr[j], arr[j+1]);
+                    rel += rel2 + " ";
+                }
+                stPathsEqu.Add(rel);
+            }
+        }
+
+        public void getNonTouch()
+        {
+            foreach (string l in loops)
+            {
+
+            }
+        }
+
     }
 
 }
